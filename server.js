@@ -23,8 +23,15 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(express.json());
 
+const allowedOrigins = ['https://myapp-6ut6a1p5o-wate7-stars-projects.vercel.app'];
 app.use(cors({
-    origin: '*',
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 app.use('/api',itemRoutes);
