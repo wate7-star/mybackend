@@ -36,7 +36,7 @@ router.post('/items', upload.single('image'), async (req, res) => {
   });
   
 // Route to get all items
-router.get('/', async (req, res) => {
+router.get('/items', async (req, res) => {
   try {
     const items = await Item.find();
     res.json(items);
