@@ -23,7 +23,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(express.json());
 
-const allowedOrigins = ['https://myapp-b7yex297e-wate7-stars-projejects.vercel.app'];
+const allowedOrigins = ['myapp-sigma-kohl.vercel.app'];
 app.use(cors({
   origin: function(origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1) {
