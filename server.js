@@ -25,7 +25,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: ['https://myapp-sigma-kohl.vercel.app', 'http://localhost:5173'],  // Add your frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }));
   
@@ -38,6 +38,4 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
   });
-  app.get('/', (req, res) => {
-    res.send('Welcome to the API. Use /api/items for accessing items.');
-  });
+ 
