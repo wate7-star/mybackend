@@ -23,16 +23,12 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(express.json());
 
-const allowedOrigins = ['myapp-sigma-kohl.vercel.app'];
 app.use(cors({
-  origin: function(origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+    origin: ['myapp-sigma-kohl.vercel.app', 'http://localhost:5173'],  // Add your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
+  
 
 app.use('/api',itemRoutes);
 console.log(process.env.CLOUDINARY_CLOUD_NAME); // Outputs: dwexbqc0u
